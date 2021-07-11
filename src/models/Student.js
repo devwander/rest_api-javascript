@@ -15,6 +15,14 @@ const students = database.define("students", {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: {
+      msg: "Email already exists.",
+    },
+    validate: {
+      isEmail: {
+        msg: "Invalid email.",
+      },
+    },
   },
 });
 

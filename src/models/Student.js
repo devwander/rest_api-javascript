@@ -3,10 +3,10 @@ const database = require("../database/index");
 
 const students = database.define("students", {
   id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
+    type: Sequelize.UUID,
     allowNull: false,
     primaryKey: true,
+    defaultValue: Sequelize.UUIDV4,
   },
   name: {
     type: Sequelize.STRING,

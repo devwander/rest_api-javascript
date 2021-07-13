@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("students", {
+    await queryInterface.createTable("administrators", {
       id: {
         type: Sequelize.UUID,
         allowNull: false,
@@ -15,6 +15,14 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      admin: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -27,6 +35,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable("students");
+    await queryInterface.dropTable("administrators");
   },
 };

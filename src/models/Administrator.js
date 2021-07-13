@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const database = require("../database/index");
 
-const students = database.define("students", {
+const administrators = database.define("administrators", {
   id: {
     type: Sequelize.UUID,
     allowNull: false,
@@ -24,6 +24,15 @@ const students = database.define("students", {
       },
     },
   },
+  admin: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: true,
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 });
 
-module.exports = students;
+module.exports = administrators;

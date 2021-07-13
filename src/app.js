@@ -2,8 +2,8 @@ import dotenv from "dotenv";
 import express from "express";
 
 import homeRoutes from "./routes/homeRoutes";
-import studentRoutes from "./routes/studentRoutes";
-import teacherRoutes from "./routes/teacherRoutes";
+import memberRoutes from "./routes/memberRoutes";
+import administratorRoutes from "./routes/administratorRoutes";
 
 dotenv.config();
 
@@ -21,8 +21,8 @@ class App {
 
   routes() {
     this.app.use("/", homeRoutes);
-    this.app.use("/students", studentRoutes);
-    this.app.use("/teachers", teacherRoutes);
+    this.app.use("/members", memberRoutes);
+    this.app.use("/teachers", administratorRoutes);
   }
 }
 export default new App().app;

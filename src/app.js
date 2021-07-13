@@ -22,7 +22,7 @@ class App {
   routes() {
     this.app.use("/", homeRoutes);
     this.app.use("/members", memberRoutes);
-    this.app.use("/teachers", administratorRoutes);
+    this.app.use("/administrators", administratorRoutes);
   }
 }
 export default new App().app;

@@ -4,6 +4,7 @@ import express from "express";
 import homeRoutes from "./routes/homeRoutes";
 import memberRoutes from "./routes/memberRoutes";
 import administratorRoutes from "./routes/administratorRoutes";
+import loginRoutes from "./routes/loginRoutes";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ class App {
     this.app.use("/", homeRoutes);
     this.app.use("/members", memberRoutes);
     this.app.use("/administrators", administratorRoutes);
+    this.app.use("/login", loginRoutes);
   }
 }
 export default new App().app;

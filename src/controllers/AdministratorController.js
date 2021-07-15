@@ -1,10 +1,11 @@
 import { hash } from "bcrypt";
-import administrators from "../models/Administrator";
+
+const { Administrator } = require("../models");
 
 class AdministratorController {
   async index(req, res) {
     try {
-      const administrator = await administrators.findAll();
+      const administrator = await Administrator.findAll();
       return res.json(administrator);
     } catch (e) {
       return res.status(400).json({
@@ -23,7 +24,7 @@ class AdministratorController {
         });
       }
 
-      const administrator = await administrators.findByPk(id);
+      const administrator = await Administrator.findByPk(id);
 
       if (!administrator) {
         return res.status(400).json({
@@ -49,7 +50,7 @@ class AdministratorController {
 
       const password_hash = await hash(password, 8);
 
-      const administrator = await administrators.create({
+      const administrator = await Administrator.create({
         name,
         email,
         password: password_hash,
@@ -73,7 +74,7 @@ class AdministratorController {
         });
       }
 
-      const administrator = await administrators.findByPk(id);
+      const administrator = await Administrator.findByPk(id);
 
       if (!administrator) {
         return res.status(400).json({
@@ -106,7 +107,7 @@ class AdministratorController {
         });
       }
 
-      const administrator = await administrators.findByPk(id);
+      const administrator = await Administrator.findByPk(id);
 
       if (!administrator) {
         return res.status(400).json({

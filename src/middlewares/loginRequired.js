@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
-import administrators from "../models/Administrator";
+
+const { Administrator } = require("../models");
 
 export default async (req, res, next) => {
   const { authorization } = req.headers;
@@ -16,7 +17,7 @@ export default async (req, res, next) => {
     const data = jwt.verify(token, process.env.TOKEN_SECRET);
     const { id, email } = data;
 
-    const user = await administrators.findOne({
+    const user = await Administrator.findOne({
       where: {
         id,
         email,

@@ -3,7 +3,6 @@
 <p align="justify">
 This project aims to materialize my knowledge in building rest apis with javascript and node.js. It simulates a simple organizational structure that has administrators and members, and these administrators are responsible for actions in the system.
 </p>
----
 
 ## Tech
 

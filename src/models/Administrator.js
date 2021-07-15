@@ -1,38 +1,33 @@
-const Sequelize = require("sequelize");
-const database = require("../database/index");
+const uuid = require("uuid").v4;
 
-const administrators = database.define("administrators", {
-  id: {
-    type: Sequelize.UUID,
-    allowNull: false,
-    primaryKey: true,
-    defaultValue: Sequelize.UUIDV4,
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: {
-      msg: "Email already exists.",
+module.exports = (sequelize, DataTypes) => {
+  const Administrator = sequelize.define("Administrator", {
+    name: {
+      type: DataTypes.STRING,
     },
-    validate: {
-      isEmail: {
-        msg: "Invalid email.",
+    email: {
+      type: DataTypes.STRING,
+      unique: {
+        msg: "Email already exists.",
+      },
+      validate: {
+        isEmail: {
+          msg: "Invalid email.",
+        },
       },
     },
-  },
-  admin: {
-    type: Sequelize.BOOLEAN,
-    allowNull: false,
-    defaultValue: true,
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-});
+    admin: {
+      type: DataTypes.BOOLEAN,
+    },
+    password: {
+      type: DataTypes.STRING,
+    },
+  });
 
-module.exports = administrators;
+  Administrator.beforeCreate((administrator) => {
+    administrator.admin = true;
+    administrator.id = uuid();
+  });
+
+  return Administrator;
+};

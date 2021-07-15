@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import { compareSync } from "bcrypt";
-import administrators from "../models/Administrator";
+
+const { Administrator } = require("../models");
 
 class TokenController {
   async store(req, res) {
@@ -12,7 +13,7 @@ class TokenController {
       });
     }
 
-    const user = await administrators.findOne({ where: { email } });
+    const user = await Administrator.findOne({ where: { email } });
 
     if (!user) {
       return res.status(401).json({

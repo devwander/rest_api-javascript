@@ -1,12 +1,15 @@
-import administrators from "../models/Administrator";
+const { Administrator } = require("../models");
 
 export default async (req, res, next) => {
   try {
-    const user = await administrators.findByPk(req.params.id);
+    const usermodified = await Administrator.findByPk(req.params.id);
 
-    console.log(user);
-    if (user.email !== req.userEmail) {
-      res.status(403).json({
+    const user = await Administrator.findOne({
+      where: { email: req.userEmail },
+    });
+
+    if (user.email !== usermodified.email) {
+      return res.status(403).json({
         errors: [
           "You do not have authorization to modify another administrator's data.",
         ],

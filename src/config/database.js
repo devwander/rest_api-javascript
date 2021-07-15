@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 module.exports = {
-  dialect: "postgres",
+  dialect: process.env.DATABASE_DIALECT,
   host: process.env.DATABASE_HOST,
   port: process.env.DATABASE_PORT,
   username: process.env.DATABASE_USERNAME,

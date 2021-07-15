@@ -1,9 +1,9 @@
-import members from "../models/Member";
+const { Member } = require("../models");
 
 class MemberController {
   async index(req, res) {
     try {
-      const member = await members.findAll();
+      const member = await Member.findAll();
       return res.json(member);
     } catch (e) {
       return res.status(400).json({
@@ -22,7 +22,7 @@ class MemberController {
         });
       }
 
-      const member = await members.findByPk(id);
+      const member = await Member.findByPk(id);
 
       if (!member) {
         return res.status(400).json({
@@ -46,7 +46,7 @@ class MemberController {
     try {
       const { name, email } = req.body;
 
-      const member = await members.create({ name, email });
+      const member = await Member.create({ name, email });
 
       return res.json(member);
     } catch (e) {
@@ -66,7 +66,7 @@ class MemberController {
         });
       }
 
-      const member = await members.findByPk(id);
+      const member = await Member.findByPk(id);
 
       if (!member) {
         return res.status(400).json({
@@ -99,7 +99,7 @@ class MemberController {
         });
       }
 
-      const member = await members.findByPk(id);
+      const member = await Member.findByPk(id);
 
       if (!member) {
         return res.status(400).json({

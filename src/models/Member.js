@@ -1,29 +1,26 @@
-const Sequelize = require("sequelize");
-const database = require("../database/index");
+const uuid = require("uuid").v4;
 
-const members = database.define("members", {
-  id: {
-    type: Sequelize.UUID,
-    allowNull: false,
-    primaryKey: true,
-    defaultValue: Sequelize.UUIDV4,
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: {
-      msg: "Email already exists.",
+module.exports = (sequelize, DataTypes) => {
+  const Member = sequelize.define("Member", {
+    name: {
+      type: DataTypes.STRING,
     },
-    validate: {
-      isEmail: {
-        msg: "Invalid email.",
+    email: {
+      type: DataTypes.STRING,
+      unique: {
+        msg: "Email already exists.",
+      },
+      validate: {
+        isEmail: {
+          msg: "Invalid email.",
+        },
       },
     },
-  },
-});
+  });
 
-module.exports = members;
+  Member.beforeCreate((member) => {
+    member.admin = true;
+    member.id = uuid();
+  });
+  return Member;
+};

@@ -1,4 +1,3 @@
-import dotenv from "dotenv";
 import express from "express";
 
 import homeRoutes from "./routes/homeRoutes";
@@ -6,7 +5,7 @@ import memberRoutes from "./routes/memberRoutes";
 import administratorRoutes from "./routes/administratorRoutes";
 import loginRoutes from "./routes/loginRoutes";
 
-dotenv.config();
+require("dotenv").config("../.env");
 
 class App {
   constructor() {

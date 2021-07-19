@@ -1,4 +1,4 @@
-import { hash } from "bcrypt";
+const { hash } = require("bcrypt");
 
 const { Administrator } = require("../models");
 
@@ -133,4 +133,4 @@ class AdministratorController {
   }
 }
 
-export default new AdministratorController();
+module.exports = new AdministratorController();

@@ -1,7 +1,7 @@
-import { Router } from "express";
-import administratorController from "../controllers/AdministratorController";
-import loginRequired from "../middlewares/loginRequired";
-import isYourself from "../middlewares/isYourself";
+const { Router } = require("express");
+const administratorController = require("../controllers/AdministratorController");
+const loginRequired = require("../middlewares/loginRequired");
+const isYourself = require("../middlewares/isYourself");
 
 const router = new Router();
 
@@ -16,4 +16,4 @@ router.delete(
   administratorController.delete
 );
 
-export default router;
+module.exports = router;

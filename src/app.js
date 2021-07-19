@@ -1,9 +1,9 @@
-import express from "express";
+const express = require("express");
 
-import homeRoutes from "./routes/homeRoutes";
-import memberRoutes from "./routes/memberRoutes";
-import administratorRoutes from "./routes/administratorRoutes";
-import loginRoutes from "./routes/loginRoutes";
+const homeRoutes = require("./routes/homeRoutes");
+const memberRoutes = require("./routes/memberRoutes");
+const administratorRoutes = require("./routes/administratorRoutes");
+const loginRoutes = require("./routes/loginRoutes");
 
 require("dotenv").config("../.env");
 
@@ -26,4 +26,4 @@ class App {
     this.app.use("/login", loginRoutes);
   }
 }
-export default new App().app;
+module.exports = new App().app;

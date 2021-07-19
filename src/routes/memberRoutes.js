@@ -1,6 +1,6 @@
-import { Router } from "express";
-import memberController from "../controllers/MemberController";
-import loginRequired from "../middlewares/loginRequired";
+const { Router } = require("express");
+const memberController = require("../controllers/MemberController");
+const loginRequired = require("../middlewares/loginRequired");
 
 const router = new Router();
 
@@ -10,4 +10,4 @@ router.get("/:id", loginRequired, memberController.show);
 router.put("/:id", loginRequired, memberController.update);
 router.delete("/:id", loginRequired, memberController.delete);
 
-export default router;
+module.exports = router;

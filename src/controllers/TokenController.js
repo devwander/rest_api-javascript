@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken";
-import { compareSync } from "bcrypt";
+const jwt = require("jsonwebtoken");
+const { compareSync } = require("bcrypt");
 
 const { Administrator } = require("../models");
 
@@ -36,4 +36,4 @@ class TokenController {
   }
 }
 
-export default new TokenController();
+module.exports = new TokenController();

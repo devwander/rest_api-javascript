@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config("../.env");
 
 module.exports = {
   dialect: process.env.DATABASE_DIALECT,

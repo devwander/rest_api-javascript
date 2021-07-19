@@ -1,6 +1,6 @@
 const { Administrator } = require("../models");
 
-export default async (req, res, next) => {
+module.exports = async (req, res, next) => {
   try {
     const usermodified = await Administrator.findByPk(req.params.id);
 

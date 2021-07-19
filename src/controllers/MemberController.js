@@ -125,4 +125,4 @@ class MemberController {
   }
 }
 
-export default new MemberController();
+module.exports = new MemberController();

@@ -1,8 +1,8 @@
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
 const { Administrator } = require("../models");
 
-export default async (req, res, next) => {
+module.exports = async (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization) {

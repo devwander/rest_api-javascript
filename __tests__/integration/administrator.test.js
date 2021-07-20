@@ -10,7 +10,7 @@ describe('Integration tests of "administrators" routes', () => {
     await truncate();
   });
 
-  it("Creation method test", async () => {
+  it("admin creation test - create", async () => {
     const createAdmin = await request(app).post("/administrators").send({
       name: "Test",
       email: "test@test.com",
@@ -20,7 +20,7 @@ describe('Integration tests of "administrators" routes', () => {
     expect(createAdmin.status).toBe(200);
   });
 
-  it("Build method test with error (ERROR)", async () => {
+  it("admin creation test - create (ERROR)", async () => {
     const createAdmin = await request(app).post("/administrators").send({
       name: "Test ERROR",
       email: "testERROR", // invalid email
@@ -30,10 +30,10 @@ describe('Integration tests of "administrators" routes', () => {
     expect(createAdmin.status).toBe(400);
   });
 
-  it("General admin search test", async () => {
+  it("admin search test - index", async () => {
     // create
     const password_hash = await bcrypt.hash("testsearch", 8);
-    const administrator = await Administrator.create({
+    await Administrator.create({
       name: "Test search",
       email: "search@test.com",
       password: password_hash,
@@ -55,7 +55,7 @@ describe('Integration tests of "administrators" routes', () => {
     expect(searchAdmins.status).toBe(200);
   });
 
-  it("Admin search test", async () => {
+  it("admin search test - show", async () => {
     // create
     const password_hash = await bcrypt.hash("searchUnic", 8);
     const administrator = await Administrator.create({
@@ -81,7 +81,7 @@ describe('Integration tests of "administrators" routes', () => {
     expect(searchAdmin.status).toBe(200);
   });
 
-  it("admin search test with uuid syntax error (ERROR)", async () => {
+  it("admin search test error - Incorrect UUID syntax - show (ERROR)", async () => {
     // create
     const password_hash = await bcrypt.hash("searchUnicERROR", 8);
     const administrator = await Administrator.create({
@@ -107,7 +107,7 @@ describe('Integration tests of "administrators" routes', () => {
     expect(searchAdmin.status).toBe(400);
   });
 
-  it("admin search test with id not found (ERROR)", async () => {
+  it("admin search test error - Administrator does not exist - show (ERROR)", async () => {
     // create
     const password_hash = await bcrypt.hash("searchUnicNotFound", 8);
     const administrator = await Administrator.create({
@@ -133,7 +133,7 @@ describe('Integration tests of "administrators" routes', () => {
     expect(searchAdmin.status).toBe(400);
   });
 
-  it("admin data change test", async () => {
+  it("admin data change test - update", async () => {
     // create
     const password_hash = await bcrypt.hash("testUpdate", 8);
     const administrator = await Administrator.create({
@@ -162,7 +162,7 @@ describe('Integration tests of "administrators" routes', () => {
     expect(updateAdmin.status).toBe(200);
   });
 
-  it("admin data delete test", async () => {
+  it("admin data delete test - delete", async () => {
     // create
     const password_hash = await bcrypt.hash("testDelet", 8);
     const administrator = await Administrator.create({

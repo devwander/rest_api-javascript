@@ -1,6 +1,5 @@
 const express = require("express");
 
-const homeRoutes = require("./routes/homeRoutes");
 const memberRoutes = require("./routes/memberRoutes");
 const administratorRoutes = require("./routes/administratorRoutes");
 const loginRoutes = require("./routes/loginRoutes");
@@ -20,7 +19,6 @@ class App {
   }
 
   routes() {
-    this.app.use("/", homeRoutes);
     this.app.use("/members", memberRoutes);
     this.app.use("/administrators", administratorRoutes);
     this.app.use("/login", loginRoutes);

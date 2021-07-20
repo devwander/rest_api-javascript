@@ -52,7 +52,7 @@ yarn sequelize db:migrate
 
 ## Startup
 
-Now that our environment is ready we must run the following commands to start it.,
+Now that our environment is ready we must run the following commands to start it.
 
 ```bash
 # NPM
@@ -60,6 +60,20 @@ npm run dev
 
 # Yarn
 yarn dev
+```
+
+---
+
+## Tests
+
+The application has integration and unit testing coverage, to access your data use:
+
+```bash
+# NPM
+npm run test
+
+# Yarn
+yarn test
 ```
 
 ---

@@ -1,0 +1,481 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API REST - Javascript",
+    "description": "This project aims to materialize my knowledge in building rest apis with javascript and node.js. It simulates a simple organizational structure that has administrators and members, and these administrators are responsible for actions in the system.",
+    "contact": {
+      "email": "josewanderson173@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Test API"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Admin login",
+        "description": "This route is responsible for the administrator login generating its Access Token (JWT).",
+        "tags": ["Login"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              },
+              "examples": {
+                "administrator": {
+                  "value": {
+                    "email": "bob@bob.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Something prevented the creation of a new administrator. Please check the following possibilities: \n - There is already an administrator with this email. \n - The uploaded data is badly formatted."
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/administrators": {
+      "post": {
+        "summary": "Administrator registration",
+        "description": "The route is responsible for registering new administrators",
+        "tags": ["Administrators"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Administrator"
+              },
+              "examples": {
+                "administrator": {
+                  "value": {
+                    "name": "Bob G.",
+                    "email": "bob@bob.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Something prevented the creation of a new administrator. Please check the following possibilities: \n - There is already an administrator with this email. \n - The uploaded data is badly formatted."
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Administrator"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Search for administrators",
+        "description": "The route is responsible for searching all existing administrators in the application.",
+        "tags": ["Administrators"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Administrator"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/administrators/{id}": {
+      "get": {
+        "summary": "Search for an administrator",
+        "description": "The route is responsible for searching only an existing administrator in the application.",
+        "tags": ["Administrators"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "admin UUID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Administrator"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Change administrator data",
+        "description": "This route is responsible for changing the administrator's data. Note: Only the administrator himself can change his data.",
+        "tags": ["Administrators"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "admin UUID",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Administrator"
+              },
+              "examples": {
+                "administrator": {
+                  "value": {
+                    "name": "Bob G. White",
+                    "email": "bob@bob.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "You do not have authorization to modify another administrator's data."
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Administrator"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete administrator",
+        "description": "This route is responsible for deleting the administrator. Note: Only the administrator himself can delete your data.",
+        "tags": ["Administrators"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "admin UUID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "You do not have authorization to modify another administrator's data."
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Administrator"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/members": {
+      "post": {
+        "summary": "Member registration",
+        "description": "This route has the function of registering new members",
+        "tags": ["Members"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Member"
+              },
+              "examples": {
+                "member": {
+                  "value": {
+                    "name": "Oliver Queen",
+                    "email": "oliver@oliver.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Something prevented the creation of a new Member. Please check the following possibilities: \n - There is already an member with this email. \n - The uploaded data is badly formatted."
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Search for members",
+        "description": "This route is responsible for searching all existing members in the application.",
+        "tags": ["Members"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/members/{id}": {
+      "get": {
+        "summary": "Search for an member",
+        "description": "The route is responsible for searching only an existing member in the application.",
+        "tags": ["Members"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "member UUID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Change member data",
+        "description": "This route is responsible for changing the member's data.",
+        "tags": ["Members"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "member UUID",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Member"
+              },
+              "examples": {
+                "member": {
+                  "value": {
+                    "name": "Oliver Queen Green",
+                    "email": "oliver@oliver.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "You do not have authorization to modify another administrator's data."
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete member",
+        "description": "This route is responsible for deleting the member.",
+        "tags": ["Members"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "member UUID",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "You do not have authorization to modify another administrator's data."
+          },
+          "200": {
+            "descriptin": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Member"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Administrator": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "Member": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

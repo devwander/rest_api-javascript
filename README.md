@@ -6,10 +6,12 @@ This project aims to materialize my knowledge in building rest apis with javascr
 
 ## Tech
 
-- <a href="https://nodejs.org/en/" target="_blank">Node.js</a>
 - <a href="https://www.javascript.com/" target="_blank">JavaScript</a>
-- <a href="https://expressjs.com/pt-br/" target="_blank">Express</a>
+- <a href="https://nodejs.org/en/" target="_blank">Node.js</a>
+- <a href="https://expressjs.com" target="_blank">Express</a>
 - <a href="https://sequelize.org/" target="_blank">Sequelize ORM</a>
+- <a href="https://jestjs.io/" target="_blank">Jest</a>
+- <a href="https://swagger.io/docs/" target="_blank">Swagger Docs</a>
 - <a href="https://jwt.io/" target="_blank">JWT</a>
 
 ---
@@ -61,6 +63,30 @@ npm run dev
 # Yarn
 yarn dev
 ```
+
+---
+
+## Routes
+
+All routes have been documented using Swagger Docs, go to "/api-docs" for more details and testing.
+
+However, below is a table containing the functionalities of the application.
+
+| ROUTER               |   TYPE   |                                                         OCCUPATION                                                         |
+| -------------------- | :------: | :------------------------------------------------------------------------------------------------------------------------: |
+| /login               |   POST   |                  This route is responsible for the administrator login generating its Access Token (JWT).                  |
+| -------------------- | -------- |
+| /administrator       |   POST   |                                The route is responsible for registering new administrators.                                |
+| /administrator       |   GET    |                   The route is responsible for searching all existing administrators in the application.                   |
+| /administrator/{id}  |   GET    |                 The route is responsible for searching only an existing administrator in the application.                  |
+| /administrator/{id}  |   PUT    | This route is responsible for changing the administrator's data. Note: Only the administrator himself can change his data. |
+| /administrator/{id}  |  DELETE  |    This route is responsible for deleting the administrator. Note: Only the administrator himself can delete your data.    |
+| -------------------- | -------- |
+| /members             |   POST   |                                  This route has the function of registering new members.                                   |
+| /members             |   GET    |                      This route is responsible for searching all existing members in the application.                      |
+| /members/{id}        |   GET    |                     The route is responsible for searching only an existing member in the application.                     |
+| /members/{id}        |   PUT    |                                 This route is responsible for changing the member's data.                                  |
+| /members/{id}        |  DELETE  |                                     This route is responsible for deleting the member.                                     |
 
 ---
 

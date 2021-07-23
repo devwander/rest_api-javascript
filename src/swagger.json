@@ -62,7 +62,7 @@
     "/administrators": {
       "post": {
         "summary": "Administrator registration",
-        "description": "The route is responsible for registering new administrators",
+        "description": "The route is responsible for registering new administrators.",
         "tags": ["Administrators"],
         "requestBody": {
           "content": {
@@ -243,7 +243,7 @@
     "/members": {
       "post": {
         "summary": "Member registration",
-        "description": "This route has the function of registering new members",
+        "description": "This route has the function of registering new members.",
         "tags": ["Members"],
         "security": [{ "bearerAuth": [] }],
         "requestBody": {

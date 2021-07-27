@@ -1,6 +1,5 @@
 const request = require("supertest");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
 const { Administrator } = require("../../src/models");
 const truncate = require("../utils/truncate");

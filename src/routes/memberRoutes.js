@@ -1,13 +1,13 @@
 const { Router } = require("express");
 const memberController = require("../controllers/MemberController");
-const loginRequired = require("../middlewares/loginRequired");
+const Auth = require("../middlewares/Auth");
 
 const router = new Router();
 
-router.post("/", loginRequired, memberController.store);
-router.get("/", loginRequired, memberController.index);
-router.get("/:id", loginRequired, memberController.show);
-router.put("/:id", loginRequired, memberController.update);
-router.delete("/:id", loginRequired, memberController.delete);
+router.post("/", Auth, memberController.store);
+router.get("/", Auth, memberController.index);
+router.get("/:id", Auth, memberController.show);
+router.put("/:id", Auth, memberController.update);
+router.delete("/:id", Auth, memberController.delete);
 
 module.exports = router;

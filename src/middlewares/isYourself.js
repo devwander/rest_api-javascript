@@ -2,8 +2,8 @@ const { Administrator } = require("../models");
 
 module.exports = async (req, res, next) => {
   try {
-    const usermodified = await Administrator.findByPk(req.params.id);
-
+    const usermodified = await Administrator.findByPk(req.userId);
+    console.log(req.userId);
     const user = await Administrator.findOne({
       where: { email: req.userEmail },
     });

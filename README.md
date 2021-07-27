@@ -94,6 +94,8 @@ However, below is a table containing the functionalities of the application.
 
 The application has integration and unit testing coverage, to access your data use:
 
+note: It is necessary that the database is changed in the environment variables (".env") before starting the tests.
+
 ```bash
 # NPM
 npm run test

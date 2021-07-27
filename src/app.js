@@ -9,7 +9,9 @@ const loginRoutes = require("./routes/loginRoutes");
 
 const swaggerDocs = require("./swagger.json");
 
-require("dotenv").config("../.env");
+require("dotenv").config({
+  path: ".env",
+});
 
 class App {
   constructor() {

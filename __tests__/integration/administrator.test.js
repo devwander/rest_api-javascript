@@ -30,108 +30,108 @@ describe('Integration tests of "administrators" routes', () => {
     expect(createAdmin.status).toBe(400);
   });
 
-  // it("admin search test - index", async () => {
-  //   // create
-  //   const password_hash = await bcrypt.hash("testsearch", 8);
-  //   await Administrator.create({
-  //     name: "Test search",
-  //     email: "search@test.com",
-  //     password: password_hash,
-  //   });
+  it("admin search test - index", async () => {
+    // create
+    const password_hash = await bcrypt.hash("testsearch", 8);
+    await Administrator.create({
+      name: "Test search",
+      email: "search@test.com",
+      password: password_hash,
+    });
 
-  //   // login
-  //   const loginAdmin = await request(app).post("/login").send({
-  //     email: "search@test.com",
-  //     password: "testsearch",
-  //   });
+    // login
+    const loginAdmin = await request(app).post("/login").send({
+      email: "search@test.com",
+      password: "testsearch",
+    });
 
-  //   const token = loginAdmin.text.split(":")[1].slice(1, -2);
+    const token = loginAdmin.text.split(":")[1].slice(1, -2);
 
-  //   // index
-  //   const searchAdmins = await request(app)
-  //     .get("/administrators")
-  //     .set("Authorization", `Bearer ${token}`);
+    // index
+    const searchAdmins = await request(app)
+      .get("/administrators")
+      .set("Authorization", `Bearer ${token}`);
 
-  //   expect(searchAdmins.status).toBe(200);
-  // });
+    expect(searchAdmins.status).toBe(200);
+  });
 
-  // it("admin search test - show", async () => {
-  //   // create
-  //   const password_hash = await bcrypt.hash("searchUnic", 8);
-  //   const administrator = await Administrator.create({
-  //     name: "Test search",
-  //     email: "searchUnic@test.com",
-  //     password: password_hash,
-  //   });
+  it("admin search test - show", async () => {
+    // create
+    const password_hash = await bcrypt.hash("searchUnic", 8);
+    const administrator = await Administrator.create({
+      name: "Test search",
+      email: "searchUnic@test.com",
+      password: password_hash,
+    });
 
-  //   // login
-  //   const loginAdmin = await request(app).post("/login").send({
-  //     email: "searchUnic@test.com",
-  //     password: "searchUnic",
-  //   });
+    // login
+    const loginAdmin = await request(app).post("/login").send({
+      email: "searchUnic@test.com",
+      password: "searchUnic",
+    });
 
-  //   const token = loginAdmin.text.split(":")[1].slice(1, -2);
+    const token = loginAdmin.text.split(":")[1].slice(1, -2);
 
-  //   // show
-  //   let parameter = administrator.id;
-  //   const searchAdmin = await request(app)
-  //     .get("/administrators/" + parameter)
-  //     .set("Authorization", `Bearer ${token}`);
+    // show
+    let parameter = administrator.id;
+    const searchAdmin = await request(app)
+      .get("/administrators/" + parameter)
+      .set("Authorization", `Bearer ${token}`);
 
-  //   expect(searchAdmin.status).toBe(200);
-  // });
+    expect(searchAdmin.status).toBe(200);
+  });
 
-  // it("admin search test error - Incorrect UUID syntax - show (ERROR)", async () => {
-  //   // create
-  //   const password_hash = await bcrypt.hash("searchUnicERROR", 8);
-  //   const administrator = await Administrator.create({
-  //     name: "Test search ERROR",
-  //     email: "searchUnicERROR@test.com",
-  //     password: password_hash,
-  //   });
+  it("admin search test error - Incorrect UUID syntax - show (ERROR)", async () => {
+    // create
+    const password_hash = await bcrypt.hash("searchUnicERROR", 8);
+    const administrator = await Administrator.create({
+      name: "Test search ERROR",
+      email: "searchUnicERROR@test.com",
+      password: password_hash,
+    });
 
-  //   // login
-  //   const loginAdmin = await request(app).post("/login").send({
-  //     email: "searchUnicERROR@test.com",
-  //     password: "searchUnicERROR",
-  //   });
+    // login
+    const loginAdmin = await request(app).post("/login").send({
+      email: "searchUnicERROR@test.com",
+      password: "searchUnicERROR",
+    });
 
-  //   const token = loginAdmin.text.split(":")[1].slice(1, -2);
+    const token = loginAdmin.text.split(":")[1].slice(1, -2);
 
-  //   // show
-  //   let parameter = "000000";
-  //   const searchAdmin = await request(app)
-  //     .get("/administrators/" + parameter)
-  //     .set("Authorization", `Bearer ${token}`);
+    // show
+    let parameter = "000000";
+    const searchAdmin = await request(app)
+      .get("/administrators/" + parameter)
+      .set("Authorization", `Bearer ${token}`);
 
-  //   expect(searchAdmin.status).toBe(400);
-  // });
+    expect(searchAdmin.status).toBe(400);
+  });
 
-  // it("admin search test error - Administrator does not exist - show (ERROR)", async () => {
-  //   // create
-  //   const password_hash = await bcrypt.hash("searchUnicNotFound", 8);
-  //   const administrator = await Administrator.create({
-  //     name: "Test search NotFound",
-  //     email: "searchUnicNotFound@test.com",
-  //     password: password_hash,
-  //   });
+  it("admin search test error - Administrator does not exist - show (ERROR)", async () => {
+    // create
+    const password_hash = await bcrypt.hash("searchUnicNotFound", 8);
+    const administrator = await Administrator.create({
+      name: "Test search NotFound",
+      email: "searchUnicNotFound@test.com",
+      password: password_hash,
+    });
 
-  //   // login
-  //   const loginAdmin = await request(app).post("/login").send({
-  //     email: "searchUnicNotFound@test.com",
-  //     password: "searchUnicNotFound",
-  //   });
+    // login
+    const loginAdmin = await request(app).post("/login").send({
+      email: "searchUnicNotFound@test.com",
+      password: "searchUnicNotFound",
+    });
 
-  //   const token = loginAdmin.text.split(":")[1].slice(1, -2);
+    const token = loginAdmin.text.split(":")[1].slice(1, -2);
 
-  //   // show
-  //   let parameter = "00000000-0000-0000-0000-000000000000";
-  //   const searchAdmin = await request(app)
-  //     .get("/administrators/" + parameter)
-  //     .set("Authorization", `Bearer ${token}`);
+    // show
+    let parameter = "00000000-0000-0000-0000-000000000000";
+    const searchAdmin = await request(app)
+      .get("/administrators/" + parameter)
+      .set("Authorization", `Bearer ${token}`);
 
-  //   expect(searchAdmin.status).toBe(400);
-  // });
+    expect(searchAdmin.status).toBe(400);
+  });
 
   it("admin data change test - update", async () => {
     // create

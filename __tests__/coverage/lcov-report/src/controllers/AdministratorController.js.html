@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.18% </span>
+                <span class="strong">66.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>103/137</span>
+                <span class='fraction'>91/137</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.45% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/11</span>
+                <span class='fraction'>9/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.18% </span>
+                <span class="strong">66.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>103/137</span>
+                <span class='fraction'>91/137</span>
             </div>
         
             
@@ -204,6 +204,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -211,34 +230,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -336,46 +336,46 @@
 const { Administrator } = require("../models");
 &nbsp;
 class AdministratorController {
-  // async index(req, res) {
-  //   try {
-  //     const administrator = await Administrator.findAll();
-  //     return res.json(administrator);
-  //   } catch (e) {
-  //     return res.status(400).json({
-  //       errors: e.errors.map((err) =&gt; err.message),
-  //     });
-  //   }
-  // }
+  async index(req, res) {
+    try {
+      const administrator = await Administrator.findAll();
+      return res.json(administrator);
+    } <span class="branch-0 cbranch-no" title="branch not covered" >catch (e) {</span>
+<span class="cstat-no" title="statement not covered" >      return res.status(400).json({</span>
+<span class="cstat-no" title="statement not covered" >        errors: e.errors.map((err) =&gt; err.message),</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+  }
 &nbsp;
-  // async show(req, res) {
-  //   try {
-  //     const { id } = req.params;
+  async show(req, res) {
+    try {
+      const { id } = req.params;
 &nbsp;
-  //     if (!id) {
-  //       return res.status(400).json({
-  //         errors: ["ID not found."],
-  //       });
-  //     }
+      if (!id) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >        return res.status(400).json({</span>
+<span class="cstat-no" title="statement not covered" >          errors: ["ID not found."],</span>
+<span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
 &nbsp;
-  //     const administrator = await Administrator.findByPk(id);
+      const administrator = await Administrator.findByPk(id);
 &nbsp;
-  //     if (!administrator) {
-  //       return res.status(400).json({
-  //         errors: ["Administrator does not exist."],
-  //       });
-  //     }
-  //     return res.json(administrator);
-  //   } catch (e) {
-  //     if (e.length &gt; 1) {
-  //       return res.status(400).json({
-  //         errors: e.errors.map((err) =&gt; err.message),
-  //       });
-  //     }
-  //     return res.status(400).json({
-  //       errors: ["Incorrect UUID syntax"],
-  //     });
-  //   }
-  // }
+      if (!administrator) {
+        return res.status(400).json({
+          errors: ["Administrator does not exist."],
+        });
+      }
+      return res.json(administrator);
+    } catch (e) {
+      if (e.length &gt; 1) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >        return res.status(400).json({</span>
+<span class="cstat-no" title="statement not covered" >          errors: e.errors.map((err) =&gt; err.message),</span>
+<span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
+      return res.status(400).json({
+        errors: ["Incorrect UUID syntax"],
+      });
+    }
+  }
 &nbsp;
   async store(req, res) {
     try {
@@ -389,8 +389,8 @@ class AdministratorController {
         password: password_hash,
       });
 &nbsp;
-      const { updatedAt, createdAt, admin } = administrator;
-      return res.json({ name, email, updatedAt, createdAt, admin });
+      const { admin, updatedAt, createdAt } = administrator;
+      return res.json({ name, email, admin, updatedAt, createdAt });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) =&gt; err.message),
@@ -475,7 +475,7 @@ module.exports = new AdministratorController();
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Jul 27 2021 09:25:02 GMT-0300 (Horário Padrão de Brasília)
+                at Fri Aug 13 2021 14:21:28 GMT-0300 (Horário Padrão de Brasília)
             </div>
         </div>
         <script src="../../prettify.js"></script>

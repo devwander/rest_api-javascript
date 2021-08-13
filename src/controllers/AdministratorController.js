@@ -3,46 +3,46 @@ const { hash } = require("bcrypt");
 const { Administrator } = require("../models");
 
 class AdministratorController {
-  // async index(req, res) {
-  //   try {
-  //     const administrator = await Administrator.findAll();
-  //     return res.json(administrator);
-  //   } catch (e) {
-  //     return res.status(400).json({
-  //       errors: e.errors.map((err) => err.message),
-  //     });
-  //   }
-  // }
+  async index(req, res) {
+    try {
+      const administrator = await Administrator.findAll();
+      return res.json(administrator);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map((err) => err.message),
+      });
+    }
+  }
 
-  // async show(req, res) {
-  //   try {
-  //     const { id } = req.params;
+  async show(req, res) {
+    try {
+      const { id } = req.params;
 
-  //     if (!id) {
-  //       return res.status(400).json({
-  //         errors: ["ID not found."],
-  //       });
-  //     }
+      if (!id) {
+        return res.status(400).json({
+          errors: ["ID not found."],
+        });
+      }
 
-  //     const administrator = await Administrator.findByPk(id);
+      const administrator = await Administrator.findByPk(id);
 
-  //     if (!administrator) {
-  //       return res.status(400).json({
-  //         errors: ["Administrator does not exist."],
-  //       });
-  //     }
-  //     return res.json(administrator);
-  //   } catch (e) {
-  //     if (e.length > 1) {
-  //       return res.status(400).json({
-  //         errors: e.errors.map((err) => err.message),
-  //       });
-  //     }
-  //     return res.status(400).json({
-  //       errors: ["Incorrect UUID syntax"],
-  //     });
-  //   }
-  // }
+      if (!administrator) {
+        return res.status(400).json({
+          errors: ["Administrator does not exist."],
+        });
+      }
+      return res.json(administrator);
+    } catch (e) {
+      if (e.length > 1) {
+        return res.status(400).json({
+          errors: e.errors.map((err) => err.message),
+        });
+      }
+      return res.status(400).json({
+        errors: ["Incorrect UUID syntax"],
+      });
+    }
+  }
 
   async store(req, res) {
     try {

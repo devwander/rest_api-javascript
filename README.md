@@ -72,19 +72,17 @@ All routes have been documented using Swagger Docs, go to "/api-docs" for more d
 
 However, below is a table containing the functionalities of the application.
 
-| ROUTER               |   TYPE   |                                                         OCCUPATION                                                         |
-| -------------------- | :------: | :------------------------------------------------------------------------------------------------------------------------: | --- |
-| /login               |   POST   |                  This route is responsible for the administrator login generating its Access Token (JWT).                  |
-| -------------------- | -------- |
-| /administrator       |   POST   |                                The route is responsible for registering new administrators.                                |     |
-| /administrator       |   PUT    | This route is responsible for changing the administrator's data. Note: Only the administrator himself can change his data. |
-| /administrator       |  DELETE  |    This route is responsible for deleting the administrator. Note: Only the administrator himself can delete your data.    |
-| -------------------- | -------- |
-| /members             |   POST   |                                  This route has the function of registering new members.                                   |
-| /members             |   GET    |                      This route is responsible for searching all existing members in the application.                      |
-| /members/{id}        |   GET    |                     The route is responsible for searching only an existing member in the application.                     |
-| /members/{id}        |   PUT    |                                 This route is responsible for changing the member's data.                                  |
-| /members/{id}        |  DELETE  |                                     This route is responsible for deleting the member.                                     |
+| ROUTER  | TYPE | OCCUPATION |
+| ------------- |:-------------:|:-------------:|
+| /login | POST | This route is responsible for the administrator login generating its Access Token (JWT). |
+| /administrator | POST | The route is responsible for registering new administrators. |
+ /administrator | PUT | This route is responsible for changing the administrator's data. Note: Only the administrator himself can change his data. |
+  | /administrator | DELETE | This route is responsible for deleting the administrator. Note: Only the administrator himself can delete your data. |
+| /members | POST | This route has the function of registering new members. |
+| /members | GET | This route is responsible for searching all existing members in the application. |
+| /members/{id} | GET | The route is responsible for searching only an existing member in the application. |
+| /members/{id} | PUT | This route is responsible for changing the member's data. |
+| /members/{id} | DELETE | This route is responsible for deleting the member. |
 
 ---
 
